@@ -1,38 +1,63 @@
-.App {
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+}
+
+.App{
+  max-width: 85.375rem;
+  max-height: 53rem;
+  margin: auto;
+}
+.headphone-img-container, .login-side{
+  flex-grow: 1;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #323232;
+}
+.headphone-img-container{
+
+}
+.headphone-img{
+  width: 100%;
+  max-width:35.125rem ;
+  max-height: 37.625rem;
+}
+.login-side{
+  flex-direction: column;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.hit-bit-title{
+  font-size: 8rem;
+  font-weight: bold;
+  color: #156AC4;
+  margin: 0;
+  padding: 0;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.intro-message{
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #FFFFFF;
+  margin: 0;
+  padding: 0;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.login-btn{
+  width: 21.875rem;
+  height: 5.5rem;
+  border-radius: 4.375rem;
+  background: #156AC4;
+  color: #FFFFFF;
+  font-size: 2rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  align-items: center;
+  text-decoration: none;
+  margin: 6rem auto;
 }

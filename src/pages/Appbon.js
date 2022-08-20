@@ -11,7 +11,6 @@ function App() {
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
   const RESPONSE_TYPE = "token"
 
-
   const [token, setToken] = useState("")
 
   useEffect(() => {
@@ -60,19 +59,7 @@ const renderArtists = () => {
       </div>
   ))
 }
-var Spotify = require('spotify-web-api-js');
-var spotifyApi = new Spotify();
-spotifyApi.setAccessToken(token);
-//spotifyApi.setPromiseImplementation()
 
-spotifyApi.searchTracks('artist:Love').then(
-    function (data) {
-      console.log('Search tracks by "Love" in the artist name', data);
-    },
-    function (err) {
-      console.error(err);
-    }
-  );
 
 console.log('token : ' + token)
   return (

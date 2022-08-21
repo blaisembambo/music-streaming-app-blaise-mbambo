@@ -5,9 +5,9 @@
 }
 
 .App{
-  max-width: 85.375rem;
+  /* max-width: 85.375rem;
   max-height: 53rem;
-  margin: auto;
+  margin: auto; */
 }
 .headphone-img-container, .login-side{
   flex-grow: 1;
@@ -60,4 +60,54 @@
   align-items: center;
   text-decoration: none;
   margin: 6rem auto;
+}
+
+.layout-container{
+  color: #FFFFFF;
+}
+.header-container, .left-sidebar-content, .main-content, .player-container{
+  position: fixed;
+}
+
+.header-container, .player-container{
+  height: 10vh;
+  width: 100%;
+} 
+.header-container{
+  top: 0;
+  background-color: #323030;
+}
+.left-sidebar-content{
+  top: 10vh;
+  height: 80vh;
+  width: 20vw;
+  left: 0;
+  background-color: #000000;
+} 
+.left-sidebar-content, .main-content{
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.main-content{
+  top: 10vh;
+  height: 80vh;
+  width: 80vw;
+  left: 20vw;
+  background-color: #202020;
+} 
+.main-content::-webkit-scrollbar, .left-sidebar-content::-webkit-scrollbar {
+  width: 7px;
+}
+.main-content::-webkit-scrollbar-track {
+  background-color: #202123;
+}
+.left-sidebar-content::-webkit-scrollbar-track{
+  background-color: #000000;
+}
+.main-content::-webkit-scrollbar-thumb, .left-sidebar-content::-webkit-scrollbar-thumb {
+  background-color: #909091;
+}
+.player-container{
+  bottom: 0;
+  background-color: #181818;
 }

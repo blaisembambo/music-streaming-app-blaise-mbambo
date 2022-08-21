@@ -1,5 +1,5 @@
 import './App.css';
-import Login from './login/Login';
+import Login from '../pages/login/Login';
 import { useState, useEffect } from 'react'
 import Home from './pages/home/Home';
 import axios from 'axios';

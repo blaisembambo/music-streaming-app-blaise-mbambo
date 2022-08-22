@@ -17,7 +17,11 @@ function App() {
             <Route path='/' element={<Layout/>}>
               <Route index element={<Home/>} />
               <Route path='search' element={<Search/>} />
-              <Route path='library' element={<Library/>} />
+              <Route path='library' element={<Library/>} >
+                <Route path='playlists' element={<Search/>} />
+                <Route path='artists' element={<Search/>} />
+                <Route path='albums' element={<Search/>} />
+              </Route>
             </Route>
           </Routes>
         </BrowserRouter>

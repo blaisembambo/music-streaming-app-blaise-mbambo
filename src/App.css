@@ -3,7 +3,9 @@
   padding: 0;
   box-sizing: content-box;
 }
-
+ul{
+  list-style-type: none;
+}
 .App{
   /* max-width: 85.375rem;
   max-height: 53rem;
@@ -76,6 +78,33 @@
 .header-container{
   top: 0;
   background-color: #323030;
+  padding: 0 1.4375rem 0 1.4375rem;
+  padding-right: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+}
+.user-logout{
+  width: 12.6875rem;
+  height: 2.5rem;
+  border-radius: 4rem;
+  background-color: #202020;
+  margin-right: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.7rem 0 0.7rem;
+}
+.user-logout img{
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+}
+.user-logout svg{
+  fill: #FFFFFF;
+  width: 1rem;
+  height: 1rem;
 }
 .left-sidebar-content{
   top: 10vh;
@@ -110,4 +139,50 @@
 .player-container{
   bottom: 0;
   background-color: #181818;
+}
+.main-menu{
+ margin-top: 3.25rem;
+ border-bottom: 1px solid gray;
+}
+.logo {
+  width: 9.25rem;
+  height: 2.75rem;
+}
+.logo img {
+  width: 100%;
+}
+.main-menu li{
+  display: flex;
+}
+.main-menu svg{
+  fill: #FFFFFF;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.main-menu a{
+  text-decoration: none;
+  color: #A4A4A4;
+  font-size: 1rem;
+  font-weight:500;
+  margin: 0.3rem 1.4375rem 1.625rem 1.4375rem;
+  display: block;
+}
+.left-sidebar-content{
+  padding-left: 1.4375rem;
+  padding-right: 1.4375rem;
+}
+.active{
+  color: #FFFFFF !important;
+}
+.playlists{
+padding-top: 1rem;
+}
+.playlists-title{
+  font-size: 1.2rem;
+  font-weight:500;
+  margin-bottom: 1.3rem;
+}
+.playlist{
+  margin-bottom: 0.8rem;
 }

@@ -1,9 +1,12 @@
+import Playlists from './Playlists'
+import Artists from './Artists'
+import Albums from './Albums'
 
 export default function Home(){
 
     return(
         <div>
-            <h1>library page</h1>
+            
         </div>
     )
 }

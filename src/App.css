@@ -1,7 +1,7 @@
 *{
   margin: 0;
   padding: 0;
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 ul{
   list-style-type: none;
@@ -109,13 +109,18 @@ ul{
 .left-sidebar-content{
   top: 10vh;
   height: 80vh;
-  width: 20vw;
+  width: 17vw;
   left: 0;
   background-color: #000000;
+  
 } 
 .left-sidebar-content, .main-content{
   overflow-x: hidden;
   overflow-y: scroll;
+}
+.horiz-line{
+  width: 14rem;
+  text-align: center;
 }
 .main-content{
   top: 10vh;
@@ -124,16 +129,16 @@ ul{
   left: 20vw;
   background-color: #202020;
 } 
-.main-content::-webkit-scrollbar, .left-sidebar-content::-webkit-scrollbar {
+.main-content::-webkit-scrollbar, .left-sidebar-content::-webkit-scrollbar, .playlists-content::-webkit-scrollbar {
   width: 7px;
 }
-.main-content::-webkit-scrollbar-track {
+.main-content::-webkit-scrollbar-track, .playlists-content::-webkit-scrollbar-track {
   background-color: #202123;
 }
 .left-sidebar-content::-webkit-scrollbar-track{
   background-color: #000000;
 }
-.main-content::-webkit-scrollbar-thumb, .left-sidebar-content::-webkit-scrollbar-thumb {
+.main-content::-webkit-scrollbar-thumb, .left-sidebar-content::-webkit-scrollbar-thumb, .playlists-content::-webkit-scrollbar-thumb {
   background-color: #909091;
 }
 .player-container{
@@ -142,7 +147,8 @@ ul{
 }
 .main-menu{
  margin-top: 3.25rem;
- border-bottom: 1px solid gray;
+ /*border-bottom: 1px solid gray;*/
+ height: 30vh;
 }
 .logo {
   width: 9.25rem;
@@ -168,21 +174,54 @@ ul{
   margin: 0.3rem 1.4375rem 1.625rem 1.4375rem;
   display: block;
 }
+.main-menu li{
+  margin-left: 1.5rem;
+}
 .left-sidebar-content{
-  padding-left: 1.4375rem;
-  padding-right: 1.4375rem;
+width: 20vw;
+
 }
 .active{
   color: #FFFFFF !important;
 }
 .playlists{
 padding-top: 1rem;
+
 }
 .playlists-title{
   font-size: 1.2rem;
   font-weight:500;
   margin-bottom: 1.3rem;
+  margin-left: 1.5rem;
+}
+.playlists-content{
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 29vh;
+  margin-left: 1.5rem;
 }
 .playlist{
   margin-bottom: 0.8rem;
+}
+.search-bar{
+  background-color: #FFFFFF;
+  height: 1.9rem;
+  width: 20rem;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 0.6rem;
+}
+.search-bar svg{
+  fill: #000000;
+}
+.search-bar input{
+  width: 18rem;
+  height: 1.9rem;
+  border-left: 1px solid #000000;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  outline: none;
+
 }

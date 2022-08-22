@@ -2,6 +2,7 @@ import { Outlet,Link } from "react-router-dom";
 import { useState } from "react";
 import HitBitLogo from '../images/hit-bit-logo.png'
 import {BiLibrary} from 'react-icons/bi'
+import {BsSearch} from 'react-icons/bs'
 
 export default function Layout() { 
 
@@ -37,7 +38,10 @@ return(
                 <img src={HitBitLogo} />
             </div>
             <div className="header-middle-content">
-
+                <div className="search-bar">
+                    <BsSearch />
+                    <input type="text" />
+                </div>
             </div>
             <div className="user-logout">
                 <img src="" alt="" />
@@ -64,15 +68,19 @@ return(
                         </li>
                     </ul>
                 </nav>
+                <hr className="horiz-line" />
                 <div className="playlists">
                     <p className="playlists-title">PLAYLISTS</p>
-                    <p className="playlist">playlist 1</p>
-                    <p className="playlist">playlist 1</p>
-                    <p className="playlist">playlist 1</p>
-                    <p className="playlist">playlist 1</p>
-                    <p className="playlist">playlist 1</p>
-                    <p className="playlist">playlist 1</p>
-                    <p className="playlist">playlist 1</p>
+                    <div className="playlists-content">
+                        <p className="playlist">playlist 1</p>
+                        <p className="playlist">playlist 1</p>
+                        <p className="playlist">playlist 1</p>
+                        <p className="playlist">playlist 1</p>
+                        <p className="playlist">playlist 1</p>
+                        <p className="playlist">playlist 1</p>
+                        <p className="playlist">playlist 1</p>
+                        <p className="playlist">playlist 2</p>
+                    </div>
                 </div>
         </div>
         <div className="main-content">

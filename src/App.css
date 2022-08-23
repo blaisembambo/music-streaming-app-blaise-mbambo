@@ -73,7 +73,7 @@ ul{
 
 .header-container, .player-container{
   height: 10vh;
-  width: 100%;
+  
 } 
 .header-container{
   top: 0;
@@ -81,19 +81,49 @@ ul{
   padding: 0 1.4375rem 0 1.4375rem;
   padding-right: 3rem;
   display: flex;
-  justify-content: space-between;
+  justify-content:right;
   align-items:center;
+  width: 80vw;
+}
+.search-bar{
+  background-color: #FFFFFF;
+  height: 1.9rem;
+  width: 20rem;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 0.6rem;
+}
+.search-bar svg{
+  fill: #000000;
+}
+.search-bar input{
+  width: 18rem;
+  height: 1.9rem;
+  border: none;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  outline: none;
+
+}
+.playlists-menu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .user-logout{
   width: 12.6875rem;
   height: 2.5rem;
   border-radius: 4rem;
   background-color: #202020;
-  margin-right: 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 0.7rem 0 0.7rem;
+}
+.header-middle-content{
+  margin: auto;
 }
 .user-logout img{
   width: 1.5rem;
@@ -107,8 +137,7 @@ ul{
   height: 1rem;
 }
 .left-sidebar-content{
-  top: 10vh;
-  height: 80vh;
+  height: 100vh;
   width: 17vw;
   left: 0;
   background-color: #000000;
@@ -120,7 +149,7 @@ ul{
 }
 .horiz-line{
   width: 14rem;
-  text-align: center;
+  margin: auto;
 }
 .main-content{
   top: 10vh;
@@ -144,6 +173,7 @@ ul{
 .player-container{
   bottom: 0;
   background-color: #181818;
+  width: 100%;
 }
 .main-menu{
  margin-top: 3.25rem;
@@ -151,11 +181,13 @@ ul{
  height: 30vh;
 }
 .logo {
-  width: 9.25rem;
-  height: 2.75rem;
+  background-color: #323030;
+  height: 10vh;
+  width: 20vw;
+  padding: 0.5rem 1rem 1rem 2rem;
 }
 .logo img {
-  width: 100%;
+  width: 80%;
 }
 .main-menu li{
   display: flex;
@@ -203,25 +235,15 @@ padding-top: 1rem;
 .playlist{
   margin-bottom: 0.8rem;
 }
-.search-bar{
-  background-color: #FFFFFF;
-  height: 1.9rem;
-  width: 20rem;
-  border-radius: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 0.6rem;
+.playlists-menu a{
+  font-size: 1rem;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.8rem;
+  margin: 0.5rem;
+  border-radius: 0.2rem;
 }
-.search-bar svg{
-  fill: #000000;
-}
-.search-bar input{
-  width: 18rem;
-  height: 1.9rem;
-  border-left: 1px solid #000000;
-  border-top-right-radius: 2rem;
-  border-bottom-right-radius: 2rem;
-  outline: none;
-
+.library-menu-active{
+  background-color: #202020;
 }

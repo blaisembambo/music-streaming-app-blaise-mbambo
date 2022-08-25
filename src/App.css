@@ -271,3 +271,15 @@ padding-top: 1rem;
 .song-cards{
  
 }
+.search-form{
+  display: flex;
+  align-items: center;
+}
+.search-form button{
+  padding: 0.4rem 0.8rem 0.4rem 0.8rem;
+  margin-left: 1rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: bold;
+  border-radius: none;
+}

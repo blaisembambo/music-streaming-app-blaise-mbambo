@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.64721b91.css",
+    "main.js": "/static/js/main.a90ce1f6.js",
+    "static/js/787.27628370.chunk.js": "/static/js/787.27628370.chunk.js",
+    "static/media/headphones-transparent-png-16 1.png": "/static/media/headphones-transparent-png-16 1.ab061c2daf56a805faab.png",
+    "static/media/hit-bit-logo.png": "/static/media/hit-bit-logo.6f58a2d18a9e54c90027.png",
+    "index.html": "/index.html",
+    "main.64721b91.css.map": "/static/css/main.64721b91.css.map",
+    "main.a90ce1f6.js.map": "/static/js/main.a90ce1f6.js.map",
+    "787.27628370.chunk.js.map": "/static/js/787.27628370.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.64721b91.css",
+    "static/js/main.a90ce1f6.js"
+  ]
+}

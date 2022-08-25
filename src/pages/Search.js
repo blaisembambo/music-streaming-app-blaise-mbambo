@@ -10,22 +10,25 @@ export default function Search(){
     const [searchResult, setSearchResult]= useState({})
     
     
-    
-    spotifyApi.search(inputTextValue, ['artist', 'playlist','track','album']).then(data => setSearchResult(data))
 
-    function handleOnchange(e) {
-        setInputTextValue(e.target.value)
+    function handleSubmit() {
+        spotifyApi.search(inputTextValue, ['artist', 'playlist','track','album']).then(data => setSearchResult(data))
         console.log(searchResult)
+    }
+    function handleChange(e){
+        setInputTextValue(e.target.value)
     }
     return(
         <div>
         <div className="header-container">
             <div className="header-middle-content">
-                <div className="search-bar">
-                    <BsSearch />
-                    <input onChange={handleOnchange} value={inputTextValue} type="text" placeholder="Artistes, chansons,..." />
-                </div> 
-
+                <form className='search-form' onSubmit={handleSubmit}>
+                    <div className="search-bar">
+                            <BsSearch />
+                            <input onChange={handleChange} value={inputTextValue} type="text" placeholder="Artistes, chansons,..." />
+                    </div> 
+                    <button>Rechercher</button>
+                </form>
             </div>
             <div className="user-logout">
                 <img src="" alt="" />
@@ -37,7 +40,7 @@ export default function Search(){
         </div>
         <div className='content'>
             <h1>{inputTextValue}</h1>
-            <div>{searchResult + ''}</div>
+            <div>{Object.keys(searchResult).map(key => searchResult[key] + '<br/>')}</div>
         </div>
     </div>
     )

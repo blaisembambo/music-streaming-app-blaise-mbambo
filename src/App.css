@@ -247,3 +247,27 @@ padding-top: 1rem;
 .library-menu-active{
   background-color: #202020;
 }
+.song-card{
+  width: 12.6875rem;
+  height: 17.06225rem;
+  padding: 0.875rem;
+  background-color: #303030;
+  border-radius: 0.625rem;
+  margin: 1.375rem;
+  display:inline-block;
+}
+.song-card img{
+  width: 100%;
+  border-radius: 0.625rem;
+}
+.song-album, .song-artist{
+  font-size: 0.875rem;
+}
+.song-name{
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0.5rem 0 0.5rem 0;
+}
+.song-cards{
+ 
+}

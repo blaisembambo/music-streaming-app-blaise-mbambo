@@ -2,6 +2,10 @@ import { useState } from 'react'
 import {BsSearch} from 'react-icons/bs'
 import HitBitLogo from '../images/hit-bit-logo.png'
 import SpotifyWebApi from 'spotify-web-api-js';
+import DisplayArtists from './Components/DisplayArtists'
+import DisplayAlbums from './Components/DsplayAlbums'
+import DisplayPlaylists from './Components/DisplayPlaylists'
+import DisplayTracks from './Components/DisplayTracks'
 
 
 export default function Search(){
@@ -11,9 +15,9 @@ export default function Search(){
     
     
 
-    function handleSubmit() {
+    function handleSubmit(e) {
         spotifyApi.search(inputTextValue, ['artist', 'playlist','track','album']).then(data => setSearchResult(data))
-        console.log(searchResult)
+        e.preventDefault()
     }
     function handleChange(e){
         setInputTextValue(e.target.value)
@@ -39,8 +43,46 @@ export default function Search(){
             </div>
         </div>
         <div className='content'>
-            <h1>{inputTextValue}</h1>
-            <div>{Object.keys(searchResult).map(key => searchResult[key] + '<br/>')}</div>
+                {
+                    searchResult['artists'] && searchResult['artists'].items.length ? 
+                        <div className='artists-row'>
+                            <h1 className='search-option-title'>Artists</h1>
+                            <DisplayArtists {...searchResult['artists']} />
+                        </div>
+                        :
+                        ''
+                }
+
+                {
+                    searchResult['albums'] && searchResult['albums'].items.length ? 
+                        <div className='albums-row'>
+                            <h1 className='search-option-title'>Albums</h1>
+                            <DisplayAlbums {...searchResult['albums']} />
+                        </div>
+                        :
+                        ''
+                }
+
+                {
+                    searchResult['playlists']  && searchResult['playlists'].items.length ? 
+                        <div className='playlists-row'>
+                            <h1 className='search-option-title'>Playlists</h1>
+                            <DisplayPlaylists {...searchResult['playlists']} />
+                        </div>
+                        :
+                        ''
+                }
+
+                {
+                    searchResult['tracks'] && searchResult['tracks'].items.length ? 
+                        <div className='tarcks-row'>
+                            <h1 className='search-option-title'>Pistes</h1>
+                            <DisplayTracks {...searchResult['tracks']} />
+                        </div>
+                        :
+                        ''
+                }
+            <div>{Object.keys(searchResult['tracks'] ? searchResult['tracks'].items[0] : []).map(key => ' ( ' + key + ' ) ')}</div>
         </div>
     </div>
     )

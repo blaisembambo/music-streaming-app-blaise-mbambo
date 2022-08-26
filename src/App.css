@@ -7,9 +7,14 @@ ul{
   list-style-type: none;
 }
 .App{
-  /* max-width: 85.375rem;
-  max-height: 53rem;
-  margin: auto; */
+  width: 100vw;
+  height: 100vh;
+  margin: auto; 
+}
+.login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .headphone-img-container, .login-side{
   flex-grow: 1;
@@ -247,26 +252,33 @@ padding-top: 1rem;
 .library-menu-active{
   background-color: #202020;
 }
-.song-card{
+.square-card, .song-card{
   width: 12.6875rem;
-  height: 17.06225rem;
+  height: 18.5rem;
   padding: 0.875rem;
   background-color: #303030;
   border-radius: 0.625rem;
   margin: 1.375rem;
   display:inline-block;
 }
-.song-card img{
+.square-card img, .song-card img{
   width: 100%;
   border-radius: 0.625rem;
 }
-.song-album, .song-artist{
-  font-size: 0.875rem;
+.artist-card img{
+  border-radius: 50%;
 }
-.song-name{
+.gray-text, .song-album, .song-artist{
+  font-size: 0.875rem;
+  color: #c5c3c3;
+}
+.item-name, .song-name{
   font-size: 1rem;
   font-weight: bold;
   margin: 0.5rem 0 0.5rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .song-cards{
  
@@ -282,4 +294,33 @@ padding-top: 1rem;
   font-size: 0.875rem;
   font-weight: bold;
   border-radius: none;
+}
+.tracks table{
+  width: 100%;
+}
+.tracks th, .tracks td{
+  text-align: left;
+}
+.track-card-title-column-datas{
+  display: flex;
+  align-items: center;
+}
+.track-card-title-column-datas img{
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.track-item-name{
+  font-size: 0.875rem;
+  margin: 0;
+}
+.tracks td, .tracks th{
+  /* display: flex;
+  align-items: center; */
+}
+.tracks tr{
+  padding: 5rem 0;
+}
+.table-header-row, table{
+  border: 1px solid white;
+  border-collapse: collapse;
 }

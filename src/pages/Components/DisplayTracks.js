@@ -11,7 +11,7 @@ export default function DisplayTracks({items}){
                     <th>ALBUM</th>
                     <th>&#x1F551;</th>
                 </tr>
-                {tracks.map( (track,index) => <TrackCard {...track} key={index} index={index} />)}
+                {tracks.map( (track,index) => <TrackCard {...track} key={index} index={index + 1} />)}
             </table>
         </div>
     )

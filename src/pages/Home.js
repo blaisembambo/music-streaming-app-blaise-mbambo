@@ -4,8 +4,10 @@ import SongCrad from './Components/SongCard';
 
 export default function Home(){
     const [recentlyPlayedTracks, setRecentlyPlayedTracks] = useState([])
-    const spotifyApi = new SpotifyWebApi();
-    spotifyApi.getMyRecentlyPlayedTracks().then(data => setRecentlyPlayedTracks(data.items))
+    useEffect(function(){
+        const spotifyApi = new SpotifyWebApi();
+        spotifyApi.getMyRecentlyPlayedTracks().then(data => setRecentlyPlayedTracks(data.items))
+    },[recentlyPlayedTracks])
 
     return(
         <div className='song-cards'>

@@ -5,8 +5,12 @@ import {BiLibrary} from 'react-icons/bi'
 import {BsSearch} from 'react-icons/bs'
 import {AiOutlineHome} from 'react-icons/ai'
 import SpotifyPlayer from 'react-spotify-web-playback';
+import { useContext } from "react";
 
 export default function Layout({userInfos,token}) { 
+
+    // const userInfos = useContext('userInfosContext')
+    // const token = useContext('token')
 
 const [currentPath,setCurrentPath] = useState('')
 const [mainMenuCurrentLink,setMainMenuCurrentLink] = useState({

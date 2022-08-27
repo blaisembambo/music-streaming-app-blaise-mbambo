@@ -3,19 +3,19 @@ import {BsSearch} from 'react-icons/bs'
 import HitBitLogo from '../images/hit-bit-logo.png'
 import SpotifyWebApi from 'spotify-web-api-js';
 import DisplayArtists from './Components/DisplayArtists'
-import DisplayAlbums from './Components/DsplayAlbums'
+import DisplayAlbums from './Components/DisplayAlbums'
 import DisplayPlaylists from './Components/DisplayPlaylists'
 import DisplayTracks from './Components/DisplayTracks'
 
 
 export default function Search(){
     const [inputTextValue,setInputTextValue] = useState('')
-    const spotifyApi = new SpotifyWebApi(); 
     const [searchResult, setSearchResult]= useState({})
     
     
 
     function handleSubmit(e) {
+        const spotifyApi = new SpotifyWebApi(); 
         spotifyApi.search(inputTextValue, ['artist', 'playlist','track','album']).then(data => setSearchResult(data))
         e.preventDefault()
     }

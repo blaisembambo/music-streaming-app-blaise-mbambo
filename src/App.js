@@ -13,9 +13,10 @@ import axios from 'axios';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
-
+console.log('location : ')
+console.log(window.location);
   const CLIENT_ID = "ce1f74efed6441dc89f7c8fea44230bc"
-  const REDIRECT_URI = "http://localhost:3000"
+  const REDIRECT_URI = window.location
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
   const RESPONSE_TYPE = "token"
   const SCOPE = "ugc-image-upload%20user-modify-playback-state%20user-read-playback-state%20user-read-currently-playing%20user-read-recently-played%20user-read-playback-position%20user-top-read%20playlist-read-collaborative%20playlist-modify-public%20playlist-read-private%20playlist-modify-private%20app-remote-control%20streaming%20user-read-email%20user-read-private%20user-library-modify%20user-library-read"

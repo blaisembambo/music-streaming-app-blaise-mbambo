@@ -30,7 +30,6 @@ function App() {
   useEffect(() => {
       const hash = window.location.hash
       let token = window.localStorage.getItem("token")
-      console.log('location : ' + window.location)
       if (hash) {
           token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
 

@@ -10,7 +10,7 @@ export default function Home(){
     },[recentlyPlayedTracks])
 
     return(
-        <div className='song-cards'>
+        <div className='song-cards cards-wrapper'>
             {recentlyPlayedTracks.map(song => <SongCrad {...song.track} key={recentlyPlayedTracks.indexOf(song)} />)}
         </div>
     )

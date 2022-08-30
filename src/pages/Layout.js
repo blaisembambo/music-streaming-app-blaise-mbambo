@@ -4,7 +4,7 @@ import HitBitLogo from '../images/hit-bit-logo.png'
 import {BiLibrary} from 'react-icons/bi'
 import {BsSearch} from 'react-icons/bs'
 import {AiOutlineHome} from 'react-icons/ai'
-import SpotifyPlayer from 'react-spotify-web-playback';
+import SpotifyPlayerComponent from './Components/SpotifyPlayerComponent';
 import { useContext } from "react";
 import Logout from './Components/Logout'
 
@@ -79,10 +79,7 @@ return(
         <Outlet/>
         </div>
         <div className="player-container">
-        <SpotifyPlayer
-            token={token}
-             uris={['spotify:artist:6HQYnRM4OzToCYPpVBInuU']}
-        />;
+            <SpotifyPlayerComponent token={token}/>
         </div>
     </div>
 )

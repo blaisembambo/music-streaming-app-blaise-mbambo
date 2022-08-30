@@ -16,7 +16,7 @@ function App() {
 console.log('location : ')
 console.log(window.location);
   const CLIENT_ID = "ce1f74efed6441dc89f7c8fea44230bc"
-  const REDIRECT_URI = window.location.hostname
+  const REDIRECT_URI = window.location.hostname == 'localhost' ? 'http://localhost:3000' : 'https://plateforme-de-streaming-musica-good-2.vercel.app/'
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
   const RESPONSE_TYPE = "token"
   const SCOPE = "ugc-image-upload%20user-modify-playback-state%20user-read-playback-state%20user-read-currently-playing%20user-read-recently-played%20user-read-playback-position%20user-top-read%20playlist-read-collaborative%20playlist-modify-public%20playlist-read-private%20playlist-modify-private%20app-remote-control%20streaming%20user-read-email%20user-read-private%20user-library-modify%20user-library-read"

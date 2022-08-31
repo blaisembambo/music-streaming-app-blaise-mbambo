@@ -72,7 +72,7 @@ ul{
 .layout-container{
   color: #FFFFFF;
 }
-.header-container, .left-sidebar-content, .main-content, .player-container{
+.header-container, .left-sidebar-content, .main-content,.page-content, .player-container,.page-content{
   position: fixed;
 }
 
@@ -83,12 +83,11 @@ ul{
 .header-container{
   top: 0;
   background-color: #323030;
-  padding: 0 1.4375rem 0 1.4375rem;
-  padding-right: 3rem;
+  padding: 1rem 1.4375rem 1rem 1.4375rem;
   display: flex;
-  justify-content:right;
+  justify-content:space-between;
   align-items:center;
-  width: 80vw;
+  width: 100vw;
 }
 .search-bar{
   background-color: #FFFFFF;
@@ -148,13 +147,15 @@ ul{
   height: 1rem;
 }
 .left-sidebar-content{
-  height: 100vh;
+  position: absolute;
+  top: 10vh;
+  height: 80vh;
   width: 17vw;
   left: 0;
   background-color: #000000;
   
 } 
-.left-sidebar-content, .main-content{
+.left-sidebar-content, .main-content,.page-content{
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -163,10 +164,10 @@ ul{
   margin: auto;
 }
 .main-content{
-  top: 10vh;
-  height: 80vh;
-  width: 80vw;
-  left: 20vw;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  left: 0;
   background-color: #202020;
 } 
 .main-content::-webkit-scrollbar, .left-sidebar-content::-webkit-scrollbar, .playlists-content::-webkit-scrollbar {
@@ -180,6 +181,12 @@ ul{
 }
 .main-content::-webkit-scrollbar-thumb, .left-sidebar-content::-webkit-scrollbar-thumb, .playlists-content::-webkit-scrollbar-thumb {
   background-color: #909091;
+}
+.page-content{
+  top:10vh;
+  left:20vw;
+  width: 80vw;
+  height: 80vh;
 }
 .player-container{
   bottom: 0;
@@ -198,7 +205,7 @@ ul{
   padding: 0.5rem 1rem 1rem 2rem;
 }
 .logo img {
-  width: 80%;
+  width: 70%;
 }
 .main-menu li{
   display: flex;

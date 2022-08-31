@@ -10,11 +10,9 @@ import Artists from './pages/Artists';
 import Albums from './pages/Albums';
 import SpotifyWebApi from 'spotify-web-api-js';
 import axios from 'axios';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
-console.log('location : ')
-console.log(window.location);
   const CLIENT_ID = "ce1f74efed6441dc89f7c8fea44230bc"
   const REDIRECT_URI = window.location.hostname == 'localhost' ? 'http://localhost:3000' : 'https://plateforme-de-streaming-musica-good-2.vercel.app/'
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
@@ -26,39 +24,37 @@ console.log(window.location);
 
   const [userInfos,setUserInfos] = useState({})
   const userInfosContext = createContext();
+  const spotifyApi = new SpotifyWebApi();
 
 
   useEffect(() => {
       const hash = window.location.hash
       let token = window.localStorage.getItem("token")
-      if (hash) {
+
+      if (hash && !token) {
           token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
 
           window.location.hash = ""
           window.localStorage.setItem("token", token)
+
+          spotifyApi.setAccessToken(token);
+          spotifyApi.getMe().then(data => setUserInfos(data));
       }
 
       setToken(token)
-
-      const spotifyApi = new SpotifyWebApi();
-      spotifyApi.setAccessToken(token);
-
-      spotifyApi.getMe().then(data => setUserInfos(data));
-
-      
-
-  }, [token])
+  }, [])
 
 
 let hrefAuthorizeLink = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}&response_type=${RESPONSE_TYPE}`
-
+console.log(token)
+console.log(userInfos)
 
   return (
           <userInfosContext.Provider value={userInfos}>
             <tokenContext.Provider value={token}>
             <div className="App">
-              {token ? <BrowserRouter>
-                        <Routes>
+                <Routes>
+                  { token ? 
                   <Route path='/' element={<Layout userInfos={userInfos} token={token} />}>
                     <Route index element={<Home userInfos={userInfos} token={token} />} />
                     <Route path='search' element={<Search userInfos={userInfos} token={token}/>} />
@@ -68,8 +64,10 @@ let hrefAuthorizeLink = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${
                       <Route path='albums' element={<Albums userInfos={userInfos} token={token}/>} />
                     </Route>
                   </Route>
+                  : 
+                  <Route path={'/'} element={<Login hrefAuthorizeLink={hrefAuthorizeLink}/>}></Route>
+                  }
                 </Routes>
-                </BrowserRouter> : <Login hrefAuthorizeLink={hrefAuthorizeLink}/>}
             </div>
             </tokenContext.Provider>
           </userInfosContext.Provider>

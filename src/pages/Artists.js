@@ -10,7 +10,7 @@ export default function Artists(){
     useEffect(()=>{
         const spotifyApi = new SpotifyWebApi();
         spotifyApi.getMyTopArtists().then(artists => setUserTopArtists(artists))
-    },[userTopArtists])
+    },[])
     
 
     return(

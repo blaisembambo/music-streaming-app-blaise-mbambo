@@ -1,12 +1,16 @@
 import {TiArrowSortedDown} from 'react-icons/ti'
+import { useNavigate } from 'react-router-dom';
+
+
 
 
 export default function Logout({userInfos}){
     userInfos = {...userInfos}
+    const navigate = useNavigate();
 
     let handleLogout = e => {
         window.localStorage.removeItem('token')
-        window.location.reload(true)
+        navigate("/login", { replace: true });
     }
     return(
         <div className="user-logout">

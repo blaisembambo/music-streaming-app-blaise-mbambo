@@ -11,7 +11,7 @@ export default function Albums(){
     useEffect(()=>{
         const spotifyApi = new SpotifyWebApi();
         spotifyApi.getMySavedAlbums().then(albums => setUserSavedAlbums(albums))
-    },[userSavedAlbums])
+    },[])
     
 
     return(

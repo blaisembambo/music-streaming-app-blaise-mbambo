@@ -7,6 +7,7 @@ import {AiOutlineHome} from 'react-icons/ai'
 import SpotifyPlayerComponent from './Components/SpotifyPlayerComponent';
 import { useContext } from "react";
 import Logout from './Components/Logout'
+import Home from "./Home";
 
 export default function Layout({userInfos,token}) { 
 
@@ -35,7 +36,7 @@ return(
     
     <div className="layout-container">
 
-        <div className="left-sidebar-content">
+        {/* <div className="left-sidebar-content">
             <div className="logo">
                     <img src={HitBitLogo} />
             </div>
@@ -80,7 +81,8 @@ return(
         </div>
         <div className="player-container">
             <SpotifyPlayerComponent token={token}/>
-        </div>
+        </div> */}
+        <Outlet/>
     </div>
 )
 }

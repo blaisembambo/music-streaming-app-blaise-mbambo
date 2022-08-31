@@ -11,7 +11,7 @@ export default function Playlist({userInfos,token}){
     useEffect(()=>{
         const spotifyApi = new SpotifyWebApi();
         spotifyApi.getUserPlaylists(userInfos.id).then(playlists => setUserPlaylists(playlists))
-    },[userPlaylists])
+    },[])
     
 
     return(

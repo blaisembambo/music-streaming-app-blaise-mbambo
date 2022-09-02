@@ -6,6 +6,7 @@ import Layout from './pages/Layout'
 import Search from './pages/Search'
 import Library from './pages/Library'
 import Playlist from './pages/Playlists';
+import PlaylistContent from './pages/PlaylistContent'
 import Artists from './pages/Artists';
 import Albums from './pages/Albums';
 import SpotifyWebApi from 'spotify-web-api-js';
@@ -37,25 +38,24 @@ function App() {
           window.location.hash = ""
           window.localStorage.setItem("token", token)
 
-          spotifyApi.setAccessToken(token);
-          spotifyApi.getMe().then(data => setUserInfos(data));
-      }
 
+      }
+      spotifyApi.setAccessToken(token);
+      spotifyApi.getMe().then(data => setUserInfos(data));
       setToken(token)
   }, [])
 
 
 let hrefAuthorizeLink = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}&response_type=${RESPONSE_TYPE}`
-console.log(token)
-console.log(userInfos)
-
+ 
   return (
           <userInfosContext.Provider value={userInfos}>
             <tokenContext.Provider value={token}>
             <div className="App">
                 <Routes>
                   { token ? 
-                  <Route path='/' element={<Layout userInfos={userInfos} token={token} />}>
+                    <>
+                    <Route path='/' element={<Layout userInfos={userInfos} token={token} />}>
                     <Route index element={<Home userInfos={userInfos} token={token} />} />
                     <Route path='search' element={<Search userInfos={userInfos} token={token}/>} />
                     <Route path='library' element={<Library userInfos={userInfos} token={token}/>} >
@@ -63,9 +63,12 @@ console.log(userInfos)
                       <Route path='artists' element={<Artists userInfos={userInfos} token={token}/>} />
                       <Route path='albums' element={<Albums userInfos={userInfos} token={token}/>} />
                     </Route>
+                    <Route path='playlist/:userId' element={<PlaylistContent userInfos={userInfos} token={token} />} />
                   </Route>
-                  : 
-                  <Route path={'/'} element={<Login hrefAuthorizeLink={hrefAuthorizeLink}/>}></Route>
+                  <Route path='/login' element={<Login hrefAuthorizeLink={hrefAuthorizeLink}/>}></Route>
+                    </>
+                  :
+                  <Route path='/' element={<Login hrefAuthorizeLink={hrefAuthorizeLink}/>}></Route>
                   }
                 </Routes>
             </div>

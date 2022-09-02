@@ -1,8 +1,6 @@
 import defaultTrackImage from '../../images/image -for-tracks-albums-playlists-without-one.png'
 
 export default function TrackCard({name,album,artists,id,uri,duration_ms,index}){
-    console.log('Track uri')
-    console.log(uri)
     const albumName = album ? album.name : ''
     const albumImageUrl = album ? album.images[0].url : {defaultTrackImage}
     const min = Math.floor(duration_ms / 60000) + ''

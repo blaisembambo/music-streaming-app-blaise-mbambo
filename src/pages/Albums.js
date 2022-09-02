@@ -16,6 +16,7 @@ export default function Albums(){
 
     return(
         <div>
+            {/* {userSavedAlbums && userSavedAlbums.items ? Object.keys(userSavedAlbums.items[0].album).map(item => ' ( ' + item + ' ) ') : ''} */}
             {userSavedAlbums ? <DisplayAlbums {...userSavedAlbums }  /> : ''}
         </div>
     )

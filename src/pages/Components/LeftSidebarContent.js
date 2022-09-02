@@ -3,8 +3,40 @@ import HitBitLogo from '../../images/hit-bit-logo.png'
 import {BiLibrary} from 'react-icons/bi'
 import {BsSearch} from 'react-icons/bs'
 import {AiOutlineHome} from 'react-icons/ai'
+import { useState, useEffect } from "react";
+import SpotifyWebApi from 'spotify-web-api-js';
+import PlaylistContent from "../PlaylistContent";
+import { useNavigate } from "react-router-dom";
 
-export default function LeftSidebarContent(){
+export default function LeftSidebarContent({userInfos}){
+
+    const [currentPath,setCurrentPath] = useState('')
+    const [mainMenuCurrentLink,setMainMenuCurrentLink] = useState({
+    home:'active',
+    search:'',
+    library:''
+})
+
+function handleMainMenuLinkClick(e) {
+    setMainMenuCurrentLink(prevMainMenuCurrentLink => {
+        const o = {}
+        for (const key in prevMainMenuCurrentLink) {
+            key == e.target.id ? o[key] = 'active' : o[key] = ''
+        }
+        return o
+    })
+
+}
+
+    const [userPlaylists,setUserPlaylists] = useState({})
+    const navigate = useNavigate();
+
+
+    useEffect(()=>{
+        const spotifyApi = new SpotifyWebApi();
+         spotifyApi.getUserPlaylists(userInfos.id).then(playlists => setUserPlaylists(playlists))
+     },[])
+
     return(
         <div className="left-sidebar-content">
             {/* <div className="logo">
@@ -31,19 +63,18 @@ export default function LeftSidebarContent(){
                 </nav>
                 
                 <hr className="horiz-line" />
-            
+
                 <div className="playlists">
                     <p className="playlists-title">PLAYLISTS</p>
-                    <div className="playlists-content">
-                        <p className="playlist">playlist 1</p>
-                        <p className="playlist">playlist 1</p>
-                        <p className="playlist">playlist 1</p>
-                        <p className="playlist">playlist 1</p>
-                        <p className="playlist">playlist 1</p>
-                        <p className="playlist">playlist 1</p>
-                        <p className="playlist">playlist 1</p>
-                        <p className="playlist">playlist 2</p>
-                    </div>
+                    {
+                    userPlaylists && userPlaylists.items ? 
+                        <div className="playlists-content">                                                                  
+                               {userPlaylists.items.map((playlist,index) =><Link to={'/playlist/' + playlist.id} id={playlist.id} className="sidebar-playlist" key={index}>{playlist.name}</Link>)}
+                        </div>
+                        :
+                        ''
+                    }
+                    {/* {onClick={handlePlaylistContentDisplay}} */}
                 </div>
         </div>
     )

@@ -15,6 +15,7 @@ ul{
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #323232;
 }
 .headphone-img-container, .login-side{
   flex-grow: 1;
@@ -141,10 +142,16 @@ ul{
   border-radius: 50%;
   background-color: #FFFFFF;
 }
+.username{
+  text-overflow: ellipsis;
+}
 .user-logout svg{
   fill: #FFFFFF;
-  width: 1rem;
-  height: 1rem;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.logout-icon{
+  cursor: pointer;
 }
 .left-sidebar-content{
   position: absolute;
@@ -162,6 +169,16 @@ ul{
 .horiz-line{
   width: 14rem;
   margin: auto;
+}
+.sidebar-playlist{
+  padding: 0.4rem;
+  display: block;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+.sidebar-playlist:hover{
+  background-color: #7c7c7c;
+  color: #000000;
 }
 .main-content{
   top: 0;

@@ -20,7 +20,7 @@ export default function TrackCard({name,album,artists,id,uri,duration_ms,index})
                 <td>
                 <div className="track-card-title-column-datas">
                         <img src={albumImageUrl } alt="" />
-                        <div>
+                        <div className='track-infos'>
                             <p className="item-name track-item-name">{name}</p>
                             <p className="gray-text">{artistsNames}</p>
                         </div>

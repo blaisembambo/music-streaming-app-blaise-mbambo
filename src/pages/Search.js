@@ -1,10 +1,7 @@
 import SpotifyWebApi from 'spotify-web-api-js';
-import SpotifyPlayerComponent from './Components/SpotifyPlayerComponent'
 import HitBitLogo from '../images/hit-bit-logo.png'
-import { useEffect, useState } from "react";
-import SongCard from './Components/SongCard';
+import { useState } from "react";
 import Logout from './Components/Logout';
-import LeftSidebarContent from './Components/LeftSidebarContent';
 import {BsSearch} from 'react-icons/bs'
 import DisplayArtists from './Components/DisplayArtists'
 import DisplayAlbums from './Components/DisplayAlbums'

@@ -1,16 +1,14 @@
-import { Link } from "react-router-dom";
-import HitBitLogo from '../../images/hit-bit-logo.png'
 import {BiLibrary} from 'react-icons/bi'
 import {BsSearch} from 'react-icons/bs'
 import {AiOutlineHome} from 'react-icons/ai'
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import {currentPlaylistIdContext} from '../../App'
 import SpotifyWebApi from 'spotify-web-api-js';
-import PlaylistContent from "../PlaylistContent";
-import { useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 
-export default function LeftSidebarContent({userInfos}){
 
-    const [currentPath,setCurrentPath] = useState('')
+export default function LeftSidebarContent({userInfos,handlePlaylistIdChange}){
+
     const [mainMenuCurrentLink,setMainMenuCurrentLink] = useState({
     home:'active',
     search:'',
@@ -27,9 +25,7 @@ function handleMainMenuLinkClick(e) {
     })
 
 }
-
     const [userPlaylists,setUserPlaylists] = useState({})
-    const navigate = useNavigate();
 
 
     useEffect(()=>{
@@ -37,11 +33,11 @@ function handleMainMenuLinkClick(e) {
          spotifyApi.getUserPlaylists(userInfos.id).then(playlists => setUserPlaylists(playlists))
      },[])
 
+     const {currentPlaylistId,setCurrentPlaylistId} = useContext(currentPlaylistIdContext)
+     
+
     return(
         <div className="left-sidebar-content">
-            {/* <div className="logo">
-                    <img src={HitBitLogo} />
-            </div> */}
                 <nav >
                     <ul className="main-menu">
                         <li>
@@ -69,13 +65,14 @@ function handleMainMenuLinkClick(e) {
                     {
                     userPlaylists && userPlaylists.items ? 
                         <div className="playlists-content">                                                                  
-                               {userPlaylists.items.map((playlist,index) =><Link to={'/playlist/' + playlist.id} id={playlist.id} className="sidebar-playlist" key={index}>{playlist.name}</Link>)}
+                               {userPlaylists.items.map((playlist,index) =><Link to={'/playlist/' + playlist.id} id={playlist.id} onClick={() => {setCurrentPlaylistId(playlist.id)}} className="sidebar-playlist" key={index}>{playlist.name}</Link>)}
                         </div>
                         :
                         ''
                     }
-                    {/* {onClick={handlePlaylistContentDisplay}} */}
                 </div>
+                    
         </div>
     )
 }
+

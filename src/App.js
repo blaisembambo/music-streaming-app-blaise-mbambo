@@ -7,6 +7,8 @@ import Search from './pages/Search'
 import Library from './pages/Library'
 import Playlist from './pages/Playlists';
 import PlaylistContent from './pages/PlaylistContent'
+import ArtistContent from './pages/ArtistContent';
+import AlbumContent from './pages/AlbumContent'
 import Artists from './pages/Artists';
 import Albums from './pages/Albums';
 import SpotifyWebApi from 'spotify-web-api-js';
@@ -16,6 +18,18 @@ export const currentPlaylistIdContext = createContext({
   currentPlaylistId: "",
   setCurrentPlaylistId: () => {}
 });
+
+export const currentAlbumIdContext = createContext({
+  currentAlbumId: "",
+  setCurrentAlbumId: () => {}
+});
+
+export const currentArtistIdContext = createContext({
+  currentArtistId: "",
+  setCurrentArtistId: () => {}
+});
+
+
 
 function App() {
   const CLIENT_ID = "ce1f74efed6441dc89f7c8fea44230bc"
@@ -31,6 +45,12 @@ function App() {
 
   const [currentPlaylistId,setCurrentPlaylistId] = useState('')
   const currentPlaylistIdContextValue = {currentPlaylistId,setCurrentPlaylistId}
+
+  const [currentAlbumId,setCurrentAlbumId] = useState('')
+  const currentAlbumIdContextValue = {currentAlbumId,setCurrentAlbumId}
+
+  const [currentArtistId,setCurrentArtistId] = useState('')
+  const currentArtistIdContextValue = {currentArtistId,setCurrentArtistId}
 
 
 
@@ -55,6 +75,8 @@ function App() {
 let hrefAuthorizeLink = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}&response_type=${RESPONSE_TYPE}`
  
   return (  <currentPlaylistIdContext.Provider value={currentPlaylistIdContextValue}>
+            <currentAlbumIdContext.Provider value={currentAlbumIdContextValue}>
+            <currentArtistIdContext.Provider value={currentArtistIdContextValue}>
               <div className="App">
                   <Routes>
                     { token ? 
@@ -68,6 +90,8 @@ let hrefAuthorizeLink = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${
                         <Route path='albums' element={<Albums userInfos={userInfos} token={token}/>} />
                       </Route>
                       <Route path='playlist/:playlistId' element={<PlaylistContent userInfos={userInfos} token={token} />} />
+                      <Route path='album/:albumId' element={<AlbumContent userInfos={userInfos} token={token} />} />
+                      <Route path='artist/:artistId' element={<ArtistContent userInfos={userInfos} token={token} />} />
                     </Route>
                     <Route path='/login' element={<Login hrefAuthorizeLink={hrefAuthorizeLink}/>}></Route>
                       </>
@@ -76,6 +100,8 @@ let hrefAuthorizeLink = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${
                     }
                   </Routes>
               </div>
+              </currentArtistIdContext.Provider>
+            </currentAlbumIdContext.Provider>
             </currentPlaylistIdContext.Provider>
   );
 }

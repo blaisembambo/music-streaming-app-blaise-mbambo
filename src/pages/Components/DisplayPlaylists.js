@@ -8,7 +8,7 @@ export default function DisplayPlaylists({items}){
     const {currentPlaylistId,setCurrentPlaylistId} = useContext(currentPlaylistIdContext)
     return (
         <div className="playlists cards-wrapper">
-             {playlists ? playlists.map( (playlist,index) => <Link to={'/playlist/' + playlist.id} id={playlist.id} onClick={() => {setCurrentPlaylistId(playlist.id)}} className="sidebar-playlist" key={index}><PlaylistCard {...playlist} key={index} /></Link>) : ''}
+             {playlists ? playlists.map( (playlist,index) => <Link to={'/playlist/' + playlist.id} id={playlist.id} onClick={() => {setCurrentPlaylistId(playlist.id)}} className="main-content-playlist" key={index}><PlaylistCard {...playlist} key={index} /></Link>) : ''}
         </div>
     )
 }

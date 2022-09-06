@@ -7,16 +7,14 @@ export default function Albums(){
 
     const [userSavedAlbums,setUserSavedAlbums] = useState({})
     
-
     useEffect(()=>{
         const spotifyApi = new SpotifyWebApi();
         spotifyApi.getMySavedAlbums().then(albums => setUserSavedAlbums(albums))
     },[])
     
-
     return(
         <div>
-            {/* {userSavedAlbums && userSavedAlbums.items ? Object.keys(userSavedAlbums.items[0].album).map(item => ' ( ' + item + ' ) ') : ''} */}
+            <h1 className='albums-page-title'>Albums</h1>
             {userSavedAlbums ? <DisplayAlbums {...userSavedAlbums }  /> : ''}
         </div>
     )

@@ -44,7 +44,7 @@ export default function Search({userInfos,token}){
                     {
                         searchResult['artists'] && searchResult['artists'].items.length ? 
                             <div className='artists-row'>
-                                <h1 className='search-option-title'>Artists</h1>
+                                <h1 className='search-option-title'>Artistes</h1>
                                 <DisplayArtists {...searchResult['artists']} />
                             </div>
                             :

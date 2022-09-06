@@ -15,6 +15,7 @@ export default function Artists(){
 
     return(
         <div>
+            <h1 className='aritsts-page-title'>Artistes</h1>
              {userTopArtists ? <DisplayArtists {...userTopArtists }  /> : ''}
         </div>
     )

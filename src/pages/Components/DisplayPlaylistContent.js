@@ -52,7 +52,7 @@ export default function DisplayPlaylistContent({playlistId,userInfos}){
                                          <th>ALBUM</th>
                                          <th>&#x1F551;</th>
                                      </tr>
-                                     {playlist && playlist.tracks && playlist.tracks.items ? playlist.tracks.items.map(item => <TrackCard {...item.track} />)  : ''}
+                                     {playlist && playlist.tracks && playlist.tracks.items ? playlist.tracks.items.map((item,index) => <TrackCard {...item.track} index={index + 1} />)  : ''}
                                  </table>
                              </div>
                          </div>

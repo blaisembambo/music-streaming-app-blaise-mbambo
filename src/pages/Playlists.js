@@ -16,6 +16,7 @@ export default function Playlist({userInfos,token}){
 
     return(
         <div>
+            <h1 className='playlists-page-title'>Playlists</h1>
             {userPlaylists ? <DisplayPlaylists {...userPlaylists}  /> : ''}
         </div>
     )

@@ -176,6 +176,11 @@ ul{
   color: #FFFFFF;
   text-decoration: none;
 }
+.main-content-playlist, .main-content-album{
+  text-decoration: none;
+  color: #FFFFFF;
+  margin: 1.375rem;
+}
 .sidebar-playlist:hover{
   background-color: #7c7c7c;
   color: #000000;
@@ -292,8 +297,15 @@ padding-top: 1rem;
   padding: 0.875rem;
   background-color: #303030;
   border-radius: 0.625rem;
+}
+.song-card{
   margin: 1.375rem;
 }
+.square-card:hover, .song-card:hover{
+  transform: scale(1.1,1.1);
+}
+
+
 .square-card img, .song-card img{
   width: 100%;
   height: 60%;
@@ -364,35 +376,40 @@ tr:not(tr:nth-child(1)):hover{
 .tracks{
   padding: 1rem;
 }
-.playlist-header{
-  padding: 2rem 2rem 0 2rem;
+.playlist-header,.album-header{
+  /* padding: 2rem 2rem 0 2rem; */
 }
-.playlist-details{
+.playlist-details, .album-details{
+  padding: 2rem 2rem 1rem 2rem;
   display: flex;
 }
-.playlist-image-container img{
+.album-play-button-container{
+  background-color: #4e4e4e;
+}
+.playlist-image-container img, .album-image-container img{
   width: 14.5rem;
   height: 14.5rem;
 }
-.playlist-infos{
+.playlist-infos,.album-infos{
   align-self: flex-end;
   margin-left: 1.5625rem;
 }
-.playlist-name{
+.playlist-name, .album-name{
   font-size: 4.25rem;
   font-weight: 700;
   margin: 0.5rem 0;
 }
-.playlist-bold-text{
+.playlist-bold-text, .album-bold-text{
   font-weight: 700;
 }
 .playlist-description{
   margin: 0.8rem 0;
 }
-.playlist-play-button-container{
-  padding: 0.8rem 0;
+.playlist-play-button-container, .album-play-button-container{
+  padding: 0.8rem 0 0.8rem 2rem;
+  background-color: #414040;
 }
-.playlist-play-button-container svg{
+.playlist-play-button-container svg, .album-play-button-container svg{
   fill: #00EC5D;
   width: 3rem;
   height: 3rem;

@@ -1,7 +1,13 @@
+import SpotifyWebApi from 'spotify-web-api-js';
 import defaultTrackImage from '../../images/image -for-tracks-albums-playlists-without-one.png'
+import { useContext } from 'react'
+import {currentUriContext} from '../../App'
+
 
 export default function TrackCard({name,album,artists,id,uri,duration_ms,index,artist}){
     console.log(artist)
+    const spotifyApi = new SpotifyWebApi();
+    const {currentUri,setCurrentUri} = useContext(currentUriContext)
     const albumName = album ? album.name : ''
     const albumImageUrl = album ? album.images[0].url : {defaultTrackImage}
     const min = Math.floor(duration_ms / 60000) + ''
@@ -16,7 +22,7 @@ export default function TrackCard({name,album,artists,id,uri,duration_ms,index,a
                                                                 } ) : ''
     return (
         <>
-            <tr>
+            <tr className='track-card-tr' onClick={()=>{setCurrentUri(uri ? uri : '');spotifyApi.play()}}>
                 <td>{index}</td>
                 <td>
                 <div className="track-card-title-column-datas">

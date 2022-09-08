@@ -300,6 +300,7 @@ padding-top: 1rem;
 }
 .song-card{
   margin: 1.375rem;
+  cursor: pointer;
 }
 .square-card:hover, .song-card:hover{
   transform: scale(1.1,1.1);
@@ -368,8 +369,15 @@ padding-top: 1rem;
   /* display: flex;
   align-items: center; */
 }
-table { border-collapse: collapse; }
-tr:nth-child(1) { border-bottom: 1px solid #FFFFFF; }
+table { 
+  border-collapse: collapse; 
+}
+tr:nth-child(1) { 
+  border-bottom: 1px solid #FFFFFF; 
+}
+tr:not(tr:nth-child(1)){
+  cursor: pointer;
+}
 tr:not(tr:nth-child(1)):hover{
   background-color: #181818;
 }
@@ -385,6 +393,11 @@ tr:not(tr:nth-child(1)):hover{
 }
 .album-play-button-container, .artist-play-button-container{
   background-color: #4e4e4e;
+}
+.play-button-wrapper{
+  display: inline-block;
+  cursor: pointer;
+  background-color: yellow;
 }
 .playlist-image-container img, .album-image-container img, .artist-image-container img{
   width: 14.5rem;

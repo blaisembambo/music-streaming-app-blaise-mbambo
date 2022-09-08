@@ -1,12 +1,14 @@
 import { Outlet,Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import SpotifyPlayerComponent from './Components/SpotifyPlayerComponent';
 import LeftSidebarContent from './Components/LeftSidebarContent'
+import {currentUriContext} from '../App'
+
 
 
 export default function Layout({userInfos,token}) { 
 
-const [currentUri,setCurrentUri] = useState('')
+    const {currentUri,setCurrentUri} = useContext(currentUriContext)
 
 function handleCurrentUriChange(uri){
     setCurrentUri(uri)

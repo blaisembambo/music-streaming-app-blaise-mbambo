@@ -1,6 +1,6 @@
 import SpotifyWebApi from 'spotify-web-api-js';
 import HitBitLogo from '../../images/hit-bit-logo.png'
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import Logout from './Logout';
 import defaultArtistImage from '../../images/image-for-artist-without-image-2.png'
 import TrackCard from './TrackCard';
@@ -8,8 +8,13 @@ import{BsPlayCircleFill} from 'react-icons/bs'
 import DisplayAlbums from './DisplayAlbums';
 import DisplayTracks from './DisplayTracks';
 import { useNavigate } from 'react-router-dom';
+import {currentUriContext} from '../../App'
+
+
 
 export default function DisplayArtistContent({artistId,userInfos}){
+
+    const {currentUri,setCurrentUri} = useContext(currentUriContext)
 
     const [artist,setArtist] = useState({})
     const [artistAlbums,setArtistAlbums] = useState({})
@@ -22,8 +27,8 @@ export default function DisplayArtistContent({artistId,userInfos}){
         navigate("/login", { replace: true });
     }
 
+    const spotifyApi = new SpotifyWebApi();
     useEffect(()=>{
-        const spotifyApi = new SpotifyWebApi();
         spotifyApi.getArtist(artistId).
         then(artist => setArtist(artist)).
         catch(()=>{handleLogout()})
@@ -58,7 +63,9 @@ export default function DisplayArtistContent({artistId,userInfos}){
                                  </div>
                              </div>
                              <div className='artist-play-button-container'>
-                                 <BsPlayCircleFill/>
+                                <div className='play-button-wrapper' onClick={()=>{setCurrentUri(artist && artist.uri ? artist.uri : '');spotifyApi.play()}}>
+                                    <BsPlayCircleFill/>
+                                </div>
                              </div>
                          </div>
                          <div className='artist-discography'>

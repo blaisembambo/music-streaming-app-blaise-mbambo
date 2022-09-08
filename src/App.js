@@ -29,6 +29,11 @@ export const currentArtistIdContext = createContext({
   setCurrentArtistId: () => {}
 });
 
+export const currentUriContext = createContext({
+  currentUri: "",
+  setCurrentUri: () => {}
+});
+
 
 function App() {
   const CLIENT_ID = "ce1f74efed6441dc89f7c8fea44230bc"
@@ -50,6 +55,9 @@ function App() {
 
   const [currentArtistId,setCurrentArtistId] = useState('')
   const currentArtistIdContextValue = {currentArtistId,setCurrentArtistId}
+
+  const [currentUri,setCurrentUri] = useState('')
+  const currentUriContextValue = {currentUri,setCurrentUri}
 
   const navigate = useNavigate();
 
@@ -73,7 +81,7 @@ function App() {
 
       }
       spotifyApi.setAccessToken(token);
-      spotifyApi.getMe().then(data => setUserInfos(data))/*.catch(()=>{handleLogout()})*/
+      spotifyApi.getMe().then(data => setUserInfos(data))
       setToken(token)
   }, [])
 
@@ -83,6 +91,7 @@ let hrefAuthorizeLink = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${
   return (  <currentPlaylistIdContext.Provider value={currentPlaylistIdContextValue}>
             <currentAlbumIdContext.Provider value={currentAlbumIdContextValue}>
             <currentArtistIdContext.Provider value={currentArtistIdContextValue}>
+            <currentUriContext.Provider value={currentUriContextValue}>
               <div className="App">
                   <Routes>
                     { token ? 
@@ -106,6 +115,7 @@ let hrefAuthorizeLink = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${
                     }
                   </Routes>
               </div>
+              </currentUriContext.Provider>
               </currentArtistIdContext.Provider>
             </currentAlbumIdContext.Provider>
             </currentPlaylistIdContext.Provider>

@@ -5,14 +5,23 @@ import Logout from './Logout';
 import defaultPlaylistImage from '../../images/image -for-tracks-albums-playlists-without-one.png'
 import TrackCard from './TrackCard';
 import{BsPlayCircleFill} from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom';
 
 export default function DisplayPlaylistContent({playlistId,userInfos}){
 
     const [playlist,setPlaylist] = useState({})
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        window.localStorage.removeItem('token')
+        navigate("/login", { replace: true });
+    }
 
     useEffect(()=>{
         const spotifyApi = new SpotifyWebApi();
-        spotifyApi.getPlaylist(playlistId).then(playlist => setPlaylist(playlist))
+        spotifyApi.getPlaylist(playlistId).
+        then(playlist => setPlaylist(playlist)).
+        catch(()=>{handleLogout()})
     },[playlistId ])
 
     return(

@@ -9,7 +9,7 @@ export default function Logout({userInfos}){
     userInfos = {...userInfos}
     const navigate = useNavigate();
 
-    let handleLogout = e => {
+    const handleLogout = () => {
         window.localStorage.removeItem('token')
         navigate("/login", { replace: true });
     }

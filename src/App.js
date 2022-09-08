@@ -12,7 +12,7 @@ import AlbumContent from './pages/AlbumContent'
 import Artists from './pages/Artists';
 import Albums from './pages/Albums';
 import SpotifyWebApi from 'spotify-web-api-js';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 export const currentPlaylistIdContext = createContext({
   currentPlaylistId: "",
@@ -28,7 +28,6 @@ export const currentArtistIdContext = createContext({
   currentArtistId: "",
   setCurrentArtistId: () => {}
 });
-
 
 
 function App() {
@@ -52,6 +51,13 @@ function App() {
   const [currentArtistId,setCurrentArtistId] = useState('')
   const currentArtistIdContextValue = {currentArtistId,setCurrentArtistId}
 
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+      window.localStorage.removeItem('token')
+      navigate("/login", { replace: true });
+  }
+
 
 
   useEffect(() => {
@@ -67,7 +73,7 @@ function App() {
 
       }
       spotifyApi.setAccessToken(token);
-      spotifyApi.getMe().then(data => setUserInfos(data));
+      spotifyApi.getMe().then(data => setUserInfos(data))/*.catch(()=>{handleLogout()})*/
       setToken(token)
   }, [])
 

@@ -176,7 +176,7 @@ ul{
   color: #FFFFFF;
   text-decoration: none;
 }
-.main-content-playlist, .main-content-album{
+.main-content-playlist, .main-content-album, .main-content-artist{
   text-decoration: none;
   color: #FFFFFF;
   margin: 1.375rem;
@@ -379,37 +379,40 @@ tr:not(tr:nth-child(1)):hover{
 .playlist-header,.album-header{
   /* padding: 2rem 2rem 0 2rem; */
 }
-.playlist-details, .album-details{
+.playlist-details, .album-details, .artist-details{
   padding: 2rem 2rem 1rem 2rem;
   display: flex;
 }
-.album-play-button-container{
+.album-play-button-container, .artist-play-button-container{
   background-color: #4e4e4e;
 }
-.playlist-image-container img, .album-image-container img{
+.playlist-image-container img, .album-image-container img, .artist-image-container img{
   width: 14.5rem;
   height: 14.5rem;
 }
-.playlist-infos,.album-infos{
+.artist-image-container img{
+  border-radius: 50%;
+}
+.playlist-infos,.album-infos, .artist-infos{
   align-self: flex-end;
   margin-left: 1.5625rem;
 }
-.playlist-name, .album-name{
+.playlist-name, .album-name, .artist-name{
   font-size: 4.25rem;
   font-weight: 700;
   margin: 0.5rem 0;
 }
-.playlist-bold-text, .album-bold-text{
+.playlist-bold-text, .album-bold-text, .artist-bold-text{
   font-weight: 700;
 }
 .playlist-description{
   margin: 0.8rem 0;
 }
-.playlist-play-button-container, .album-play-button-container{
+.playlist-play-button-container, .album-play-button-container, .artist-play-button-container{
   padding: 0.8rem 0 0.8rem 2rem;
   background-color: #414040;
 }
-.playlist-play-button-container svg, .album-play-button-container svg{
+.playlist-play-button-container svg, .album-play-button-container svg, .artist-play-button-container svg{
   fill: #00EC5D;
   width: 3rem;
   height: 3rem;

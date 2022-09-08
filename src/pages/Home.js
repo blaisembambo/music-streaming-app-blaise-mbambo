@@ -4,11 +4,19 @@ import HitBitLogo from '../images/hit-bit-logo.png'
 import { useEffect, useState } from "react";
 import SongCard from './Components/SongCard';
 import Logout from './Components/Logout';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home({userInfos,token}){
 
     const [recentlyPlayedTracks, setRecentlyPlayedTracks] = useState([])
     const [currentUri,setCurrentUri] = useState('')
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        window.localStorage.removeItem('token')
+        navigate("/login", { replace: true });
+    }
 
     function handleCurrentUriChange(uri){
         setCurrentUri(uri)
@@ -17,7 +25,9 @@ export default function Home({userInfos,token}){
     useEffect(function(){
         if(recentlyPlayedTracks.length == 0){
             const spotifyApi = new SpotifyWebApi();
-            spotifyApi.getMyRecentlyPlayedTracks().then(data => setRecentlyPlayedTracks(data.items))
+            spotifyApi.getMyRecentlyPlayedTracks().
+            then(data => setRecentlyPlayedTracks(data.items)).
+            catch(() => {handleLogout()})
         }
     },[])
 

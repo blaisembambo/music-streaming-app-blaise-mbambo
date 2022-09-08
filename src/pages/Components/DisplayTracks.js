@@ -1,7 +1,7 @@
 import TrackCard from './TrackCard'
 
-export default function DisplayTracks({items}){
-    const tracks = items
+export default function DisplayTracks({items,tracks}){
+    const allTracks = tracks ? tracks : items
     return (
         <div className="tracks">
             <table>
@@ -11,7 +11,7 @@ export default function DisplayTracks({items}){
                     <th>ALBUM</th>
                     <th>&#x1F551;</th>
                 </tr>
-                {tracks.map( (track,index) => <TrackCard {...track} key={index} index={index + 1} />)}
+                {allTracks ? allTracks.map( (track,index) => <TrackCard {...track} key={index} index={index + 1} />) : ''}
             </table>
         </div>
     )

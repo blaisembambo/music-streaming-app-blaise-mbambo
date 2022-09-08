@@ -9,7 +9,6 @@ export default function DisplayArtists({items}){
     return (
         <div className="artists cards-wrapper">
             {artists ? artists.map( (artist,index) => <Link to={'/artist/' + artist.id} id={artist.id} onClick={() => {setCurrentArtistId(artist.id)}} className="main-content-artist" key={index}><ArtistCard {...artist} key={index} /></Link>) : ''}
-            {/* {artists ? artists.map( (artist,index) => <ArtistCard {...artist} key={index} />) : ''} */}
         </div>
     )
 }

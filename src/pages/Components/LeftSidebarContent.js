@@ -4,7 +4,7 @@ import {AiOutlineHome} from 'react-icons/ai'
 import { useState, useEffect, useContext } from "react";
 import {currentPlaylistIdContext} from '../../App'
 import SpotifyWebApi from 'spotify-web-api-js';
-import { Link} from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 
 
 export default function LeftSidebarContent({userInfos,handlePlaylistIdChange}){
@@ -14,6 +14,13 @@ export default function LeftSidebarContent({userInfos,handlePlaylistIdChange}){
     search:'',
     library:''
 })
+
+const navigate = useNavigate();
+
+const handleLogout = () => {
+    window.localStorage.removeItem('token')
+    navigate("/login", { replace: true });
+}
 
 function handleMainMenuLinkClick(e) {
     setMainMenuCurrentLink(prevMainMenuCurrentLink => {
@@ -30,7 +37,9 @@ function handleMainMenuLinkClick(e) {
 
     useEffect(()=>{
         const spotifyApi = new SpotifyWebApi();
-         spotifyApi.getUserPlaylists(userInfos.id).then(playlists => setUserPlaylists(playlists))
+         spotifyApi.getUserPlaylists(userInfos.id).
+         then(playlists => setUserPlaylists(playlists)).
+         catch(()=>{handleLogout()})
      },[])
 
      const {currentPlaylistId,setCurrentPlaylistId} = useContext(currentPlaylistIdContext)

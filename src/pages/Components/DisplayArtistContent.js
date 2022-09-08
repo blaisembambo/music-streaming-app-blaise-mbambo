@@ -7,6 +7,7 @@ import TrackCard from './TrackCard';
 import{BsPlayCircleFill} from 'react-icons/bs'
 import DisplayAlbums from './DisplayAlbums';
 import DisplayTracks from './DisplayTracks';
+import { useNavigate } from 'react-router-dom';
 
 export default function DisplayArtistContent({artistId,userInfos}){
 
@@ -14,11 +15,26 @@ export default function DisplayArtistContent({artistId,userInfos}){
     const [artistAlbums,setArtistAlbums] = useState({})
     const [artistTopTracks,setArtistTopTracks] = useState({})
 
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        window.localStorage.removeItem('token')
+        navigate("/login", { replace: true });
+    }
+
     useEffect(()=>{
         const spotifyApi = new SpotifyWebApi();
-        spotifyApi.getArtist(artistId).then(artist => setArtist(artist))
-        spotifyApi.getArtistAlbums(artistId).then(artistAlbums => setArtistAlbums(artistAlbums))
-        spotifyApi.getArtistTopTracks(artistId).then(artistTopTracks => setArtistTopTracks(artistTopTracks))
+        spotifyApi.getArtist(artistId).
+        then(artist => setArtist(artist)).
+        catch(()=>{handleLogout()})
+
+        spotifyApi.getArtistAlbums(artistId).
+        then(artistAlbums => setArtistAlbums(artistAlbums)).
+        catch(()=>{handleLogout()})
+
+        spotifyApi.getArtistTopTracks(artistId,'US').
+        then(artistTopTracks => setArtistTopTracks(artistTopTracks)).
+        catch(()=>{handleLogout()})
     },[artistId ])
 
     return(
@@ -38,11 +54,7 @@ export default function DisplayArtistContent({artistId,userInfos}){
                                  <div className='artist-infos'>
                                      <p className='artist-bold-text'>ARTIST</p>
                                      <h1 className='artist-name'>{artist && artist.name ? artist.name : ''}</h1>
-                                     <p className='artist-description'>{artist && artist.description ? artist.description : ''}</p>
-                                     <p className='artist-owner-followers artist-bold-text'>
-                                         <span className='owner'>{artist && artist.owner ? artist.owner.display_name : ''} </span>.
-                                         <span className='followers'> {artist && artist.followers ? artist.followers.total : ''} followers</span>
-                                     </p>
+                                     <span className='followers'> {artist && artist.followers ? artist.followers.total : ''} followers</span>
                                  </div>
                              </div>
                              <div className='artist-play-button-container'>
@@ -58,8 +70,7 @@ export default function DisplayArtistContent({artistId,userInfos}){
                          <div className='artist-popular-tracks'>
                             <h2>Chansons populaires</h2>
                              <div className="tracks">
-                                {/* {artistTopTracks ? <DisplayTracks {artistTopTracks} /> : ''} */}
-                                {Object.keys(artistTopTracks)}
+                                {artistTopTracks ? <DisplayTracks {...artistTopTracks} /> : ''}
                              </div>
                          </div>
                      </div>

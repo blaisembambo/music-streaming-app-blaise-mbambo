@@ -14,6 +14,3 @@ export default function SongCrad({album, artists, name,uri,handleCurrentUriChang
     </div>
   )   
 }
- {/* {recentlyPlayedTracks[13].track.name} */}
-        {/* album : album.images[0].url, name */}
-        {/* atrists[0].name : name */}

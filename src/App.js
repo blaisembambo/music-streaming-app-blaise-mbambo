@@ -34,6 +34,8 @@ export const currentUriContext = createContext({
   setCurrentUri: () => {}
 });
 
+export const tokenContext = createContext('');
+
 
 function App() {
   const CLIENT_ID = "ce1f74efed6441dc89f7c8fea44230bc"
@@ -92,6 +94,7 @@ let hrefAuthorizeLink = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${
             <currentAlbumIdContext.Provider value={currentAlbumIdContextValue}>
             <currentArtistIdContext.Provider value={currentArtistIdContextValue}>
             <currentUriContext.Provider value={currentUriContextValue}>
+              <tokenContext.Provider value={token}>
               <div className="App">
                   <Routes>
                     { token ? 
@@ -115,6 +118,7 @@ let hrefAuthorizeLink = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${
                     }
                   </Routes>
               </div>
+              </tokenContext.Provider>
               </currentUriContext.Provider>
               </currentArtistIdContext.Provider>
             </currentAlbumIdContext.Provider>
